@@ -136,3 +136,10 @@ describe('Function splitAddress', function () {
     expect(addr).to.equal(`126/548 ถ.สุขาประชาสรรค์ ม.การเคหะนนท์ Thailand 11120`)
   })
 })
+describe('Function splitAddress', function () {
+  it('List all province', function () {
+    let result = db.ListAddressByField('amphoe','province','กรุงเทพมหานคร')
+    console.log(result)
+  })
+
+})

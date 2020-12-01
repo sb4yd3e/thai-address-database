@@ -1,4 +1,4 @@
-(function(angular){ 
+(function(angular){
 'use strict'
 const utilAddress = require('./util/splitAddress')
 /**
@@ -90,6 +90,27 @@ const resolveResultbyField = (type, searchStr, maxResult) => {
   return possibles
 }
 
+const ListAddressByField = (type,parent,parent_data) =>{
+  let possibles = []
+  try {
+    db.filter((item, index, self) => {
+      if(parent) {
+        if(item[parent]===parent_data){
+          possibles.push(item[type])
+        }
+      }else{
+        possibles.push(item[type])
+      }
+    })
+  } catch (e) {
+    return []
+  }
+  possibles = possibles.filter(function(item, pos) {
+    return possibles.indexOf(item) === pos;
+  })
+  return possibles
+}
+
 const searchAddressByDistrict = (searchStr, maxResult) => {
   return resolveResultbyField('district', searchStr, maxResult)
 }
@@ -102,6 +123,7 @@ const searchAddressByProvince = (searchStr, maxResult) => {
 const searchAddressByZipcode = (searchStr, maxResult) => {
   return resolveResultbyField('zipcode', searchStr, maxResult)
 }
+
 
 const splitAddress = (fullAddress) => {
   let regex = /\s(\d{5})(\s|$)/gi
@@ -129,6 +151,7 @@ exports.searchAddressByDistrict = searchAddressByDistrict
 exports.searchAddressByAmphoe = searchAddressByAmphoe
 exports.searchAddressByProvince = searchAddressByProvince
 exports.searchAddressByZipcode = searchAddressByZipcode
+exports.ListAddressByField = ListAddressByField
 exports.splitAddress = splitAddress
 
 if (angular) {
@@ -139,6 +162,7 @@ if (angular) {
         searchAddressByAmphoe: searchAddressByAmphoe,
         searchAddressByProvince: searchAddressByProvince,
         searchAddressByZipcode: searchAddressByZipcode,
+        ListAddressByField: ListAddressByField,
         splitAddress: splitAddress
       })
     })
