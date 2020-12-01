@@ -1,7 +1,7 @@
 {
   "name": "thai-address-database-dropdown",
   "version": "1.0.0",
-  "description": "ปรับแก้ให้ Query ได้อิสระขึ้น",
+  "description": "Update npm and add custom query",
   "main": "lib/index.js",
   "engines": {
     "node": ">=4.2.4"
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sellsuki/thai-address-database.git"
+    "url": "git+https://github.com/sb4yd3e/thai-address-database.git"
   },
   "author": "",
   "license": "ISC",
