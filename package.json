@@ -1,6 +1,6 @@
 {
   "name": "thai-address-database-dropdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Update npm and add custom query",
   "main": "lib/index.js",
   "engines": {
